@@ -54,3 +54,6 @@ D:\Курсы\Кодинг\Кодинг\Рабочие проекты\AccountDoo
 D:\Курсы\Кодинг\Кодинг\Рабочие проекты\AccountDoors\AccountDoors\obj\Debug\App.baml
 D:\Курсы\Кодинг\Кодинг\Рабочие проекты\AccountDoors\AccountDoors\obj\Debug\Themes\MainThemes.baml
 D:\Курсы\Кодинг\Кодинг\Рабочие проекты\AccountDoors\AccountDoors\obj\Debug\AccountDoors.csprojResolveAssemblyReference.cache
+D:\dev\Other-projects-C-sharp\AccountDoors\AccountDoors\bin\Debug\AccountDoors.exe.config
+D:\dev\Other-projects-C-sharp\AccountDoors\AccountDoors\obj\Debug\AccountDoors.exe
+D:\dev\Other-projects-C-sharp\AccountDoors\AccountDoors\obj\Debug\AccountDoors.pdb

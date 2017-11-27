@@ -42,7 +42,6 @@ namespace AccountDoors.ViewModel
             }
         }
 
-
         private RelayCommand addModelCommand;
         public ICommand addModel
         {
@@ -53,20 +52,17 @@ namespace AccountDoors.ViewModel
                 return addModelCommand;
             }
         }
-
         public void ExecuteAddModel(object parameter)
         {
             ModelsDoors.Add(CurrentModelDoor);
             CurrentModelDoor = null;
         }
-
         public bool CanExecuteAddModel(object parameter)
         {
             if (String.IsNullOrEmpty(CurrentModelDoor.Name) || String.IsNullOrEmpty(CurrentModelDoor.Picture))
                 return false;
             return true;
         }
-
         protected override void OnDispose()
         {
             this.ModelsDoors.Clear();

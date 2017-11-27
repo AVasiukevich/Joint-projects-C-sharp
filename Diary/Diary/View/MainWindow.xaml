@@ -30,7 +30,19 @@
             </Grid>
         </TabItem>
         <TabItem Header="Планировщик задач">
-
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <ListView x:Name="lstV_tasks" Grid.RowSpan="2"></ListView>
+                <Calendar x:Name="calendar" Grid.Row="1" Grid.Column="1"></Calendar>
+                <ListBox x:Name="lst_desc" Grid.Column="1"></ListBox>
+            </Grid>
         </TabItem> <!--Список ежедневных задач, время выполнения, процент выполнения и тд.-->
         <TabItem Header="Менеджер проекта">
 

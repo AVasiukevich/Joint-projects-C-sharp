@@ -21,12 +21,12 @@
                     <ColumnDefinition Width="auto"></ColumnDefinition>
                     <ColumnDefinition Width="auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <ListView x:Name="lstV_news" Grid.RowSpan="5"></ListView>
+                <ListView x:Name="lstV_news" Grid.RowSpan="5" Grid.ColumnSpan="2" Margin="10,0,91,0"></ListView>
                 <ListBox x:Name="lst_site" Grid.Column="1" Grid.ColumnSpan="2" Height="200" Width="200"></ListBox>
                 <Button x:Name="btn_on_off_site" Grid.Column="1" Grid.Row="1" Content="Вкл./ Выкл."></Button>
                 <Button x:Name="btn_edit" Grid.Column="2" Grid.Row="1" Content="Настройка"></Button>
                 <TextBox x:Name="tb_keyword" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Text="Ключевое слово..."></TextBox>
-                <Button x:Name="btn_show" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" Content="Показать"></Button>
+                <Button x:Name="btn_show" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" Content="Показать" Click="btn_show_Click"></Button>
             </Grid>
         </TabItem>
         <TabItem Header="Планировщик задач">

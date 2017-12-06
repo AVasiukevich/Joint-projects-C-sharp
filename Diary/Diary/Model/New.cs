@@ -2,7 +2,7 @@
 
 namespace Diary.Model
 {
-    public class News
+    public class New
     {
         private string header;
         private string body;
@@ -22,6 +22,13 @@ namespace Diary.Model
         {
             get { return header; }
             set { header = value; }
+        }
+
+        public New(string header, string body = null, string url = null)
+        {
+            this.header = header;
+            this.body = body;
+            this.url = url;
         }
 
         public override string ToString()

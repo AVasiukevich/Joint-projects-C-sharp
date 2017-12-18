@@ -9,34 +9,39 @@ namespace Diary.Model
     class MyTask
     {
         private string name;
-        private TimeSpan? time_interval;
-        private DateTime? date;
+        private DateTime? dateEnd;
+        private DateTime? dateStart;
 
         public string Name
         {
             get { return name; }
             set { name = value; }
         }
-        public TimeSpan? Time_interval
+        public DateTime? DateEnd
         {
-            get { return time_interval; }
-            set { time_interval = value; }
+            get { return dateEnd; }
+            set { dateEnd = value; }
         }
-        public DateTime? Date
+        public DateTime? DateStart
         {
-            get { return date; }
-            set { date = value; }
+            get { return dateStart; }
+            set { dateStart = value; }
         }
-
+        public MyTask()
+        {}
         public MyTask(string name) : this(name, null, null)
         {}
         public MyTask(string name, DateTime date) : this(name, date, null)
         {}
-        public MyTask(string name, DateTime? date, TimeSpan? time_interval)
+        public MyTask(string name, DateTime? dateStart, DateTime? dateEnd)
         {
             this.name = name;
-            this.date = date;
-            this.time_interval = time_interval;
+            this.dateStart = dateStart;
+            this.dateEnd = dateEnd;
+        }
+        public override string ToString()
+        {
+            return String.Format($"{name}: {dateStart} - {dateEnd}");
         }
     }
 }

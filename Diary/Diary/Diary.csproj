@@ -59,6 +59,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Themes\TaskThemes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\AddTaskWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -81,6 +85,7 @@
     <Compile Include="Parser\IParser.cs" />
     <Compile Include="Parser\IParserSettings.cs" />
     <Compile Include="Parser\ParserWorker.cs" />
+    <Compile Include="ViewModel\AddTaskViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="View\AddTaskWindow.xaml.cs">
@@ -119,7 +124,13 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Image\card.png" />
+    <Resource Include="Image\dancer.png" />
+    <Resource Include="Image\dumbbell.png" />
+    <Resource Include="Image\english.png" />
+    <Resource Include="Image\sea.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

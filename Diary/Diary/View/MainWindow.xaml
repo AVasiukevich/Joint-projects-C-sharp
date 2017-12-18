@@ -3,11 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Diary.ViewModel"
+        xmlns:vm="clr-namespace:Diary.ViewModel"
         mc:Ignorable="d"
         Title="Ежедневник" Height="550" Width="825" WindowStartupLocation="CenterScreen">
     <Window.DataContext>
-        <local:MainWindowViewModel></local:MainWindowViewModel>
+        <vm:MainWindowViewModel></vm:MainWindowViewModel>
     </Window.DataContext>
         <TabControl>
         <TabItem Header="Новости"> <!--Парсинг новостных сайтов по нужному ключу-->
@@ -42,7 +42,7 @@
                     <RowDefinition></RowDefinition>
                     <RowDefinition Height="auto"></RowDefinition>
                 </Grid.RowDefinitions>
-                <ListView x:Name="lstV_tasks" Grid.RowSpan="2"></ListView>
+                <ListBox x:Name="lstV_tasks" ItemsSource="{Binding Path=List_tasks, UpdateSourceTrigger=PropertyChanged}" ItemTemplate="{StaticResource listTaskTemplate}" Grid.RowSpan="2"></ListBox>
                 <Calendar x:Name="calendar" Grid.Row="1" Grid.Column="1" SelectedDate="{Binding Path=SelectedData, UpdateSourceTrigger=PropertyChanged}"></Calendar>
                 <Grid  Grid.Column="1">
                     <Grid.RowDefinitions>

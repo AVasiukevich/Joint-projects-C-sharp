@@ -83,7 +83,23 @@ namespace Diary.ViewModel
             set
             {
                 _selectedData = value;
-                //MessageBox.Show(Week_ru);
+                OnPropertyChanged();
+            }
+        }
+
+        private AddTaskViewModel _addTaskVM;
+        public AddTaskViewModel AddTaskVM
+        {
+            get
+            {
+                if (_addTaskVM == null)
+                    _addTaskVM = new AddTaskViewModel();
+                return _addTaskVM;
+            }
+
+            set
+            {
+                _addTaskVM = value;
                 OnPropertyChanged();
             }
         }
@@ -91,8 +107,17 @@ namespace Diary.ViewModel
         private ObservableCollection<MyTask> _list_tasks;
         public ObservableCollection<MyTask> List_tasks
         {
-            get { return _list_tasks; }
-            set { _list_tasks = value; }
+            get
+            {
+                if (_list_tasks == null)
+                    _list_tasks = new ObservableCollection<MyTask>() { new MyTask("Тренжерный зал", DateTime.Now, DateTime.Now), new MyTask("Тренжерный зал двойной", DateTime.Now, DateTime.Now) };
+                return _list_tasks;
+            }
+            set
+            {
+                _list_tasks = value;
+                OnPropertyChanged();
+            }
         }
 
         private RelayCommand _addTask;
@@ -106,18 +131,28 @@ namespace Diary.ViewModel
             }
         }
 
+
         private bool CanExecuteAddTask(object parameter)
         {
             return true;
         }
-
         private void ExecuteAddTsk(object parameter)
         {
             AddTaskWindow add_window = new AddTaskWindow();
+            AddTaskVM.CurrentTask.DateStart = SelectedData;
+            add_window.DataContext = AddTaskVM;
             if(add_window.ShowDialog() == true)
             {
-
+                List_tasks.Add(AddTaskVM.CurrentTask);
+                AddTaskVM.CurrentTask = null;
             }
+
+            //string test = "";
+            //foreach (var item in List_tasks)
+            //{
+            //    test += item.ToString() + " ";
+            //}
+            //MessageBox.Show(test);
         }
 
         #endregion

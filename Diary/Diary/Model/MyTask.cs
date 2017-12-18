@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace Diary.Model
 {
@@ -11,7 +12,13 @@ namespace Diary.Model
         private string name;
         private DateTime? dateEnd;
         private DateTime? dateStart;
+        private Image picture;
 
+        public Image Picture
+        {
+            get { return picture; }
+            set { picture = value; }
+        }
         public string Name
         {
             get { return name; }

@@ -65,10 +65,6 @@ namespace Diary.ViewModel
         {
             MessageBox.Show("All works done!");
         }
-        protected override void OnDispose()
-        {
-            this._news.Clear();
-        }
         #endregion
         #region MY_TASKS
         private DateTime _selectedData;
@@ -110,7 +106,7 @@ namespace Diary.ViewModel
             get
             {
                 if (_list_tasks == null)
-                    _list_tasks = new ObservableCollection<MyTask>() { new MyTask("Тренжерный зал", DateTime.Now, DateTime.Now), new MyTask("Тренжерный зал двойной", DateTime.Now, DateTime.Now) };
+                    _list_tasks = MyTaskRepository.Repository;
                 return _list_tasks;
             }
             set
@@ -156,5 +152,9 @@ namespace Diary.ViewModel
         }
 
         #endregion
+        protected override void OnDispose()
+        {
+            
+        }
     }
 }

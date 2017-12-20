@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:Diary.ViewModel"
         mc:Ignorable="d"
-        Title="Ежедневник" Height="550" Width="825" WindowStartupLocation="CenterScreen">
+        Title="Ежедневник" Height="550" Width="825" WindowStartupLocation="CenterScreen" Closing="Window_Closing">
     <Window.DataContext>
         <vm:MainWindowViewModel></vm:MainWindowViewModel>
     </Window.DataContext>

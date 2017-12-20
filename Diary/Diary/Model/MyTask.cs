@@ -1,24 +1,35 @@
-﻿using System;
+﻿using Diary.ViewModel;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 
 namespace Diary.Model
 {
-    class MyTask
+    [Serializable]
+    public class MyTask
     {
         private string name;
         private DateTime? dateEnd;
         private DateTime? dateStart;
-        private Image picture;
+        private byte[] picture;
 
-        public Image Picture
+        public byte[] Picture
         {
-            get { return picture; }
-            set { picture = value; }
-        }
+            get
+            {
+                return picture;
+            }
+            set
+            {
+                picture = value;                
+            }
+        }       
         public string Name
         {
             get { return name; }
@@ -36,16 +47,16 @@ namespace Diary.Model
         }
         public MyTask()
         {}
-        public MyTask(string name) : this(name, null, null)
-        {}
-        public MyTask(string name, DateTime date) : this(name, date, null)
-        {}
-        public MyTask(string name, DateTime? dateStart, DateTime? dateEnd)
-        {
-            this.name = name;
-            this.dateStart = dateStart;
-            this.dateEnd = dateEnd;
-        }
+        //public MyTask(string name) : this(name, null, null)
+        //{}
+        //public MyTask(string name, DateTime date) : this(name, date, null)
+        //{}
+        //public MyTask(string name, DateTime? dateStart, DateTime? dateEnd)
+        //{
+        //    this.name = name;
+        //    this.dateStart = dateStart;
+        //    this.dateEnd = dateEnd;
+        //}
         public override string ToString()
         {
             return String.Format($"{name}: {dateStart} - {dateEnd}");

@@ -75,8 +75,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Converters\ImageConverter.cs" />
     <Compile Include="Infrastructure\RelayCommand.cs" />
     <Compile Include="Model\MyTask.cs" />
+    <Compile Include="Model\MyTaskRepository.cs" />
     <Compile Include="Model\New.cs" />
     <Compile Include="Model\NewRepository.cs" />
     <Compile Include="Parser\habrahabr\ParserHabra.cs" />

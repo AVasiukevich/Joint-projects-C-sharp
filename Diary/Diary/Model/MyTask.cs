@@ -1,6 +1,7 @@
 ﻿using Diary.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,21 @@ namespace Diary.Model
         private DateTime? dateEnd;
         private DateTime? dateStart;
         private byte[] picture;
+        private ObservableCollection<SubTask> list_subTasks;
 
+        public ObservableCollection<SubTask> List_subTasks
+        {
+            get
+            {
+                if (list_subTasks == null)
+                    list_subTasks = new ObservableCollection<SubTask>();
+                return list_subTasks;
+            }
+            set
+            {
+                list_subTasks = value;
+            }
+        }
         public byte[] Picture
         {
             get

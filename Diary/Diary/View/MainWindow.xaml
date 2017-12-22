@@ -42,7 +42,7 @@
                     <RowDefinition></RowDefinition>
                     <RowDefinition Height="auto"></RowDefinition>
                 </Grid.RowDefinitions>
-                <ListBox x:Name="lstV_tasks" ItemsSource="{Binding Path=List_tasks, UpdateSourceTrigger=PropertyChanged}" ItemTemplate="{StaticResource listTaskTemplate}" Grid.RowSpan="2"></ListBox>
+                <ListBox x:Name="lstV_tasks" ItemsSource="{Binding Path=List_tasks, UpdateSourceTrigger=PropertyChanged}" ItemTemplate="{StaticResource listTaskTemplate}" Grid.RowSpan="2" HorizontalContentAlignment="Stretch"></ListBox>
                 <Calendar x:Name="calendar" Grid.Row="1" Grid.Column="1" SelectedDate="{Binding Path=SelectedData, UpdateSourceTrigger=PropertyChanged}"></Calendar>
                 <Grid  Grid.Column="1">
                     <Grid.RowDefinitions>

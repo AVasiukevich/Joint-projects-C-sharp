@@ -59,6 +59,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModel\SubTaskViewModel.cs" />
+    <Compile Include="View\SubTaskWindow.xaml.cs">
+      <DependentUpon>SubTaskWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="Themes\TaskThemes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -81,6 +85,7 @@
     <Compile Include="Model\MyTaskRepository.cs" />
     <Compile Include="Model\New.cs" />
     <Compile Include="Model\NewRepository.cs" />
+    <Compile Include="Model\SubTask.cs" />
     <Compile Include="Parser\habrahabr\ParserHabra.cs" />
     <Compile Include="Parser\habrahabr\SettingsHabra.cs" />
     <Compile Include="Parser\HtmlLoader.cs" />
@@ -97,6 +102,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\SubTaskWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

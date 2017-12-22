@@ -7,7 +7,7 @@
         xmlns:vm="clr-namespace:Diary.ViewModel"
         xmlns:conv="clr-namespace:Diary.Converters"
         mc:Ignorable="d"
-        Title="Добавить задачу" Height="300" Width="400" x:Name="TaskWindow" WindowStartupLocation="CenterScreen">
+        Title="Добавить задачу" Height="400" Width="500" x:Name="TaskWindow" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <conv:ImageConverter x:Key="ImageConvertor"></conv:ImageConverter>
     </Window.Resources>
@@ -32,7 +32,19 @@
         <TextBlock Grid.Row="2" Text="Срок:" Margin="5"></TextBlock>
         <DatePicker Grid.Row="2" Grid.Column="1" Margin="5" SelectedDate="{Binding Path=CurrentTask.DateEnd, UpdateSourceTrigger=PropertyChanged}"></DatePicker>
         <ComboBox ItemTemplate="{StaticResource ListPhotoTask}" ItemsSource="{Binding Path=List_Picture}" SelectedItem="{Binding Path=CurrentTask.Picture, Mode=OneWayToSource, Converter={StaticResource ImageConvertor}}" Grid.RowSpan="3" Grid.Column="2" Grid.ColumnSpan="2" Margin="5" SelectedIndex="0"></ComboBox>
-        <Button IsDefault="True" Command="{Binding AddTask_Ok}" CommandParameter="{Binding ElementName=TaskWindow}" Grid.Row="4" Grid.Column="2" Content="Ok" Width="50" Margin="5"></Button>
-        <Button IsCancel="True" Grid.Row="4" Grid.Column="3" Content="Отмена" Width="50" Margin="5"></Button>
+        <Button IsDefault="True" Command="{Binding AddTask_Ok}" CommandParameter="{Binding ElementName=TaskWindow}" Grid.Row="6" Grid.Column="2" Content="Ok" Width="50" Margin="5"></Button>
+        <Button IsCancel="True" Grid.Row="4" Grid.Column="4" Content="Отмена" Width="50" Margin="5"></Button>
+        <GroupBox Grid.Row="3" Grid.ColumnSpan="4" Header="Подзадачи:" Margin="5">
+            <ListBox ItemsSource="{Binding CurrentTask.List_subTasks}">
+                <ListBox.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Добавить подзадачу" Command="{Binding AddSubTask}"></MenuItem>
+                        <MenuItem Header="Редактировать"></MenuItem>
+                        <Separator/>
+                        <MenuItem Header="Удалить"></MenuItem>
+                    </ContextMenu>
+                </ListBox.ContextMenu>
+            </ListBox>
+        </GroupBox>
     </Grid>
 </Window>

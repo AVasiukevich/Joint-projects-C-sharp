@@ -1,0 +1,28 @@
+﻿<Window x:Class="Diary.View.SubTaskWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Diary.View"
+        mc:Ignorable="d"
+        Title="Добавить подзадачу" Height="300" Width="400" WindowStartupLocation="CenterScreen" x:Name="STWindow">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBox Margin="5" Grid.ColumnSpan="3" Text="{Binding СurrentSubTask.Description, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="5">
+            <TextBlock Text="Выполнена:" VerticalAlignment="Center"></TextBlock>
+            <RadioButton Margin="5" IsChecked="{Binding СurrentSubTask.IsReady}">Да</RadioButton>
+            <RadioButton Margin="5" IsChecked="True">Нет</RadioButton>
+        </StackPanel>
+        <Button Command="{Binding AddSubTask_Ok}" CommandParameter="{Binding ElementName=STWindow}" Grid.Row="1" Grid.Column="1" Margin="5">Добавить</Button>
+        <Button IsCancel="True" Grid.Row="1" Grid.Column="2" Margin="5">Отмена</Button>
+    </Grid>
+</Window>

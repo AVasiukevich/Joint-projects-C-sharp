@@ -59,9 +59,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\BoolToImageConverter.cs" />
+    <Compile Include="Model\ImagesReady.cs" />
     <Compile Include="ViewModel\SubTaskViewModel.cs" />
+    <Compile Include="ViewModel\TaskViewModel.cs" />
     <Compile Include="View\SubTaskWindow.xaml.cs">
       <DependentUpon>SubTaskWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TaskWindow.xaml.cs">
+      <DependentUpon>TaskWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="Themes\TaskThemes.xaml">
       <SubType>Designer</SubType>
@@ -106,6 +112,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\TaskWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -141,6 +151,10 @@
     <Resource Include="Image\dumbbell_64.png" />
     <Resource Include="Image\english_64.png" />
     <Resource Include="Image\sea_64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\error.png" />
+    <Resource Include="Image\success.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -13,14 +13,30 @@ using System.Windows.Media.Imaging;
 namespace Diary.Model
 {
     [Serializable]
-    public class MyTask
+    public class MyTask : ViewModelBase
     {
         private string name;
         private DateTime? dateEnd;
         private DateTime? dateStart;
         private byte[] picture;
         private ObservableCollection<SubTask> list_subTasks;
+        private decimal? _percentOfCompletion;
 
+        public decimal? PercentOfCompletion
+        {
+            get
+            {
+                if (_percentOfCompletion == null && List_subTasks.Count != 0)
+                    RefreshOfCompletion();
+                return _percentOfCompletion;
+            }
+            set
+            {
+                _percentOfCompletion = value;
+                OnPropertyChanged();
+            }
+
+        }
         public ObservableCollection<SubTask> List_subTasks
         {
             get
@@ -32,6 +48,7 @@ namespace Diary.Model
             set
             {
                 list_subTasks = value;
+                //OnPropertyChanged();
             }
         }
         public byte[] Picture
@@ -42,39 +59,41 @@ namespace Diary.Model
             }
             set
             {
-                picture = value;                
+                picture = value;
+                OnPropertyChanged();
             }
         }       
         public string Name
         {
-            get { return name; }
-            set { name = value; }
+            get
+            {
+                return name;
+            }
+            set
+            {
+                name = value;
+            }
         }
         public DateTime? DateEnd
         {
             get { return dateEnd; }
-            set { dateEnd = value; }
+            set { dateEnd = value; OnPropertyChanged(); }
         }
         public DateTime? DateStart
         {
             get { return dateStart; }
-            set { dateStart = value; }
+            set { dateStart = value; OnPropertyChanged(); }
         }
         public MyTask()
         {}
-        //public MyTask(string name) : this(name, null, null)
-        //{}
-        //public MyTask(string name, DateTime date) : this(name, date, null)
-        //{}
-        //public MyTask(string name, DateTime? dateStart, DateTime? dateEnd)
-        //{
-        //    this.name = name;
-        //    this.dateStart = dateStart;
-        //    this.dateEnd = dateEnd;
-        //}
+
         public override string ToString()
         {
             return String.Format($"{name}: {dateStart} - {dateEnd}");
+        }
+        public void RefreshOfCompletion()
+        {
+            PercentOfCompletion = list_subTasks.Where(i => i.IsReady).Count() / (decimal)list_subTasks.Count();
         }
     }
 }

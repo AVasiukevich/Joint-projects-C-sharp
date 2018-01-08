@@ -4,15 +4,15 @@
                     xmlns:conv="clr-namespace:Diary.Converters">
     
     <conv:ImageConverter x:Key="ImageConvertor"></conv:ImageConverter>
-       
+    <conv:BoolToImageConverter x:Key="BoolToImageConverter"></conv:BoolToImageConverter>
+
     <DataTemplate x:Key="ListPhotoTask">
         <Image Source="{Binding Path=Source}"></Image>
     </DataTemplate>
-
     <DataTemplate x:Key="listTaskTemplate">
         <Grid Background="Transparent">
             <Grid.InputBindings>
-                <MouseBinding Gesture="LeftDoubleClick" Command="{Binding DataContext.AddTask, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"/>
+                <MouseBinding Gesture="LeftDoubleClick" Command="{Binding DataContext.ShowTask, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"/>
             </Grid.InputBindings>
                 <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
@@ -32,5 +32,47 @@
             <TextBlock Grid.Column="4" Grid.RowSpan="2" Text="TEST" VerticalAlignment="Center"></TextBlock>
         </Grid>
     </DataTemplate>
+    <DataTemplate x:Key="listSubTaskTemplate">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="{Binding Description}" FontSize="20" VerticalAlignment="Center"></TextBlock>
+            <Button Grid.Column="1" Command="{Binding DataContext.ChangeReady, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" CommandParameter="{Binding ElementName=img_ready}" Margin="1">
+                <Image x:Name="img_ready" Source="{Binding IsReady, Converter={StaticResource BoolToImageConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="32" Height="32"></Image>
+            </Button>
+        </Grid>
+    </DataTemplate>
+    <ContextMenu x:Key="ContextMenu_SubTask">
+        <MenuItem Header="Добавить подзадачу" Command="{Binding AddSubTask}"></MenuItem>
+        <MenuItem Header="Редактировать" Command="{Binding EditSubTask}"></MenuItem>
+        <Separator/>
+        <MenuItem Header="Удалить" Command="{Binding DeleteSubTask}"></MenuItem>
+    </ContextMenu>
+
+    <ControlTemplate x:Key="main_task_template">
+        <StackPanel>
+            <Image Source="{Binding Path=SelectedTask.Picture, Converter={StaticResource ImageConvertor}}" Margin="5" Stretch="None"></Image>
+            <TextBlock Text="{Binding SelectedTask.Name}" Margin="5" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"></TextBlock>
+            <TextBlock Text="{Binding SelectedTask.DateStart, StringFormat=\{0:dd.MM.yyyy\} - }" Margin="5" HorizontalAlignment="Center" FontSize="14"></TextBlock>
+            <TextBlock Text="{Binding SelectedTask.DateEnd, StringFormat=\{0:dd.MM.yyyy\}}" Margin="5" HorizontalAlignment="Center" FontSize="14"></TextBlock>
+            <TextBlock Text="Выполнено:" Margin="5" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"></TextBlock>
+            <TextBlock Text="{Binding SelectedTask.PercentOfCompletion, StringFormat={}{0:p0}, UpdateSourceTrigger=PropertyChanged}" Margin="5" HorizontalAlignment="Center" FontSize="14" FontWeight="Bold"></TextBlock>
+        </StackPanel>
+    </ControlTemplate>
+    <ControlTemplate x:Key="edit_task_template">
+        <StackPanel>
+            <Image Source="{Binding Path=SelectedTask.Picture, Converter={StaticResource ImageConvertor}}" Margin="5" Stretch="None"></Image>
+            <TextBox Text="{Binding SelectedTask.Name, UpdateSourceTrigger=PropertyChanged}" Margin="5" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"></TextBox>
+            <DatePicker SelectedDate="{Binding SelectedTask.DateStart}" Margin="5"></DatePicker>
+            <DatePicker SelectedDate="{Binding SelectedTask.DateEnd}" Margin="5"></DatePicker>
+            <TextBlock Text="Выполнено:" Margin="5" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold"></TextBlock>
+            <TextBlock Text="{Binding SelectedTask.PercentOfCompletion, StringFormat={}{0:p0}, UpdateSourceTrigger=PropertyChanged}" Margin="5" HorizontalAlignment="Center" FontSize="14" FontWeight="Bold"></TextBlock>
+        </StackPanel>
+    </ControlTemplate>
+
+
+
 
 </ResourceDictionary> 

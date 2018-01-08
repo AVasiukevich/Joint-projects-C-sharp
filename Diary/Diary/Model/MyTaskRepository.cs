@@ -24,7 +24,7 @@ namespace Diary.Model
         }
         public static void SaveXML(ObservableCollection<MyTask> rep)
         {
-            using (FileStream file = new FileStream("TaskBD.xml", FileMode.OpenOrCreate))
+            using (FileStream file = new FileStream("TaskBD.xml", FileMode.Create))
             {
                 XmlSerializer xmlFormat = new XmlSerializer(typeof(ObservableCollection<MyTask>));
                 xmlFormat.Serialize(file, rep);

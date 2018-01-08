@@ -2,6 +2,7 @@
 
 namespace Diary.Model
 {
+    [Serializable]
     public class SubTask
     {
         private string description;
@@ -9,14 +10,28 @@ namespace Diary.Model
 
         public string Description
         {
-            get { return description; }
-            set { description = value; }
+            get
+            {
+                return description;
+            }
+            set
+            {
+                description = value;
+            }
         }
         public bool IsReady
         {
-            get { return isReady; }
-            set { isReady = value; }
+            get
+            {
+                return isReady;
+            }
+            set
+            {
+                isReady = value;
+            }
         }
+        public SubTask()
+        {}
 
         public override string ToString()
         {

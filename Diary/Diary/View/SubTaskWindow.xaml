@@ -22,7 +22,7 @@
             <RadioButton Margin="5" IsChecked="{Binding СurrentSubTask.IsReady}">Да</RadioButton>
             <RadioButton Margin="5" IsChecked="True">Нет</RadioButton>
         </StackPanel>
-        <Button Command="{Binding AddSubTask_Ok}" CommandParameter="{Binding ElementName=STWindow}" Grid.Row="1" Grid.Column="1" Margin="5">Добавить</Button>
+        <Button Name="Test" Command="{Binding AddSubTask_Ok}" CommandParameter="{Binding ElementName=STWindow}" Grid.Row="1" Grid.Column="1" Margin="5">Добавить</Button>
         <Button IsCancel="True" Grid.Row="1" Grid.Column="2" Margin="5">Отмена</Button>
     </Grid>
 </Window>

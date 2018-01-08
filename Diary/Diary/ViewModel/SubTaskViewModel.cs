@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace Diary.ViewModel
 {
-    class SubTaskViewModel : ViewModelBase
+    public class SubTaskViewModel : ViewModelBase
     {
         private SubTask _currentSubTask;
         public SubTask СurrentSubTask

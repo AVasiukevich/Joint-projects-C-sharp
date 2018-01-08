@@ -17,21 +17,7 @@ namespace Diary.ViewModel
     {
         private MyTask _currentTask;
         private List<Image> _list_picture;
-        private SubTaskViewModel _subTaskVM;
 
-        public SubTaskViewModel SubTaskVM
-        {
-            get
-            {
-                if (_subTaskVM == null)
-                    _subTaskVM = new SubTaskViewModel();
-                return _subTaskVM;
-            }
-            set
-            {
-                _subTaskVM = value;
-            }
-        }     
         public MyTask CurrentTask
         {
             get
@@ -88,27 +74,6 @@ namespace Diary.ViewModel
             {
                 taskWindow.DialogResult = true;
                 taskWindow.Close();
-            }
-        }
-
-        private RelayCommand _addSubTask;
-        public ICommand AddSubTask
-        {
-            get
-            {
-                if (_addSubTask == null)
-                    _addSubTask = new RelayCommand(ExecuteAddSubTask);
-                return _addSubTask;
-            }
-        }
-        private void ExecuteAddSubTask(object obj)
-        {
-            SubTaskWindow _window = new SubTaskWindow();
-            _window.DataContext = SubTaskVM;
-            if(_window.ShowDialog() == true)
-            {
-                CurrentTask.List_subTasks.Add(_subTaskVM.СurrentSubTask);
-                _subTaskVM.СurrentSubTask = null;
             }
         }
     }

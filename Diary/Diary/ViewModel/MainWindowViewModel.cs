@@ -10,7 +10,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
 
 namespace Diary.ViewModel
 {
@@ -67,7 +69,25 @@ namespace Diary.ViewModel
         }
         #endregion
         #region MY_TASKS
+        
         private DateTime _selectedData;
+        private AddTaskViewModel _addTaskVM;
+        private ObservableCollection<MyTask> _list_tasks;
+        private TaskViewModel _taskVM;
+
+        public TaskViewModel TaskVM
+        {
+            get
+            {
+                if (_taskVM == null)
+                    _taskVM = new TaskViewModel();
+                return _taskVM;
+            }
+            set
+            {
+                _taskVM = value;
+            }
+        }
         public DateTime SelectedData
         {
             get
@@ -82,8 +102,6 @@ namespace Diary.ViewModel
                 OnPropertyChanged();
             }
         }
-
-        private AddTaskViewModel _addTaskVM;
         public AddTaskViewModel AddTaskVM
         {
             get
@@ -99,8 +117,6 @@ namespace Diary.ViewModel
                 OnPropertyChanged();
             }
         }
-
-        private ObservableCollection<MyTask> _list_tasks;
         public ObservableCollection<MyTask> List_tasks
         {
             get
@@ -126,8 +142,6 @@ namespace Diary.ViewModel
                 return _addTask;
             }
         }
-
-
         private bool CanExecuteAddTask(object parameter)
         {
             return true;
@@ -141,14 +155,27 @@ namespace Diary.ViewModel
             {
                 List_tasks.Add(AddTaskVM.CurrentTask);
                 AddTaskVM.CurrentTask = null;
-            }
+            }         
+        }
 
-            //string test = "";
-            //foreach (var item in List_tasks)
-            //{
-            //    test += item.ToString() + " ";
-            //}
-            //MessageBox.Show(test);
+        private RelayCommand _showTask;
+        public ICommand ShowTask
+        {
+            get
+            {
+                if (_showTask == null)
+                    _showTask = new RelayCommand(ExecuteShowTask);
+                return _showTask;
+            }
+        }
+        private void ExecuteShowTask(object parameter)
+        {
+            TaskWindow _window = new TaskWindow();
+            _window.DataContext = TaskVM;
+            if (_window.ShowDialog() == true)
+            {
+
+            }
         }
 
         #endregion
